@@ -10,17 +10,22 @@ class AdminScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('The Life Water'),
         actions: <Widget>[
-          const Text('ADMIN'),
-          IconButton(
+          ElevatedButton(
             onPressed: () {},
-            icon: const Icon(Icons.assignment_turned_in_outlined),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.route_outlined),
+            child: const Icon(
+              Icons.assignment_turned_in_outlined,
+              size: 30,
+            ),
           ),
           const SizedBox(
             width: 20,
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.route_outlined, size: 30),
+          ),
+          const SizedBox(
+            width: 17,
           )
         ],
       ),
@@ -33,13 +38,15 @@ class AdminScreen extends StatelessWidget {
 class _CustomerBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return SizedBox(
+      width: double.infinity,
+      height: double.infinity,
       child: Column(
         children: [
           _StateConductor(),
           _DistributionBottom(),
           const SizedBox(
-            height: 90,
+            height: 40,
           ),
           _BottomPlusClient()
         ],
@@ -56,7 +63,7 @@ class _StateConductor extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
           color: Colors.black12, borderRadius: BorderRadius.circular(30)),
-      margin: const EdgeInsets.only(top: 30),
+      margin: const EdgeInsets.only(top: 30, bottom: 20),
       padding: const EdgeInsets.all(17),
       height: 105,
       width: 330,
@@ -81,7 +88,7 @@ class _StateConductor extends StatelessWidget {
                 SizedBox(
                   width: 5,
                 ),
-                Text('Daniela cataldo sanchez')
+                Text('Nombre del Cliente')
               ],
             ),
           )
@@ -95,32 +102,49 @@ class _StateConductor extends StatelessWidget {
 class _DistributionBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      direction: Axis.horizontal,
-      crossAxisAlignment: WrapCrossAlignment.center,
-      children: [
-        BoxBottom(
-          dataIcon: Icons.person_add,
-          label: 'Crear Nuevo Cliente',
-          actionFuntion: () {},
-        ),
-        BoxBottom(
-          dataIcon: Icons.description,
-          label: 'Generar Informe',
-          actionFuntion: () {},
-        ),
-        BoxBottom(
-          dataIcon: Icons.inventory_sharp,
-          label: 'Agregar Nuevo Producto',
-          actionFuntion: () {},
-        ),
-        BoxBottom(
-          dataIcon: Icons.new_releases_outlined,
-          label: 'por determinar',
-          actionFuntion: () {},
-        ),
-      ],
-    );
+    return SizedBox(
+        width: 350,
+        height: 380,
+        child: Column(
+          children: [
+            Expanded(
+              child: Row(
+                children: [
+                  _BottonPerosnalCustomBody(
+                      iconData: Icons.person_add,
+                      label: 'Crear nuevo cliente',
+                      voidCallback: () {
+                        print('boton de creacion de nuevo cliente');
+                      }),
+                  _BottonPerosnalCustomBody(
+                      iconData: Icons.description,
+                      label: 'Generar Informe',
+                      voidCallback: () {
+                        print('bgenerador de informe');
+                      })
+                ],
+              ),
+            ),
+            Expanded(
+              child: Row(
+                children: [
+                  _BottonPerosnalCustomBody(
+                      iconData: Icons.inventory_sharp,
+                      label: 'Crear nuevo Producto',
+                      voidCallback: () {
+                        print('boton de creacion de nuevo producto');
+                      }),
+                  _BottonPerosnalCustomBody(
+                      iconData: Icons.new_releases_outlined,
+                      label: '**Sin asignar**',
+                      voidCallback: () {
+                        print('sin asignar');
+                      })
+                ],
+              ),
+            )
+          ],
+        ));
   }
 }
 
@@ -129,7 +153,9 @@ class _BottomPlusClient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        print('add client to the router');
+      },
       style: ElevatedButton.styleFrom(
           iconColor: Colors.teal,
           elevation: 10,
@@ -138,6 +164,27 @@ class _BottomPlusClient extends StatelessWidget {
         Icons.add_road_outlined,
         size: 50,
       ),
+    );
+  }
+}
+
+//Boton personalizado de mis body
+class _BottonPerosnalCustomBody extends StatelessWidget {
+  final IconData iconData;
+  final String label;
+  final VoidCallback voidCallback;
+
+  const _BottonPerosnalCustomBody(
+      {required this.iconData,
+      required this.label,
+      required this.voidCallback});
+
+  @override
+  Widget build(BuildContext context) {
+    return BoxBottom(
+      dataIcon: iconData,
+      label: label,
+      actionFuntion: voidCallback,
     );
   }
 }

@@ -7,32 +7,35 @@ class RouterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('The Life Water'),
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.assignment_turned_in_outlined),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.route_outlined),
-          ),
-          const SizedBox(
-            width: 20,
-          )
-        ],
-      ),
-      body: _BodyRouterCustomer(),
-    );
+        appBar: AppBar(
+          title: const Text('The Life Water'),
+          actions: <Widget>[
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.assignment_turned_in_outlined, size: 30),
+            ),
+            const SizedBox(
+              width: 20,
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.route_outlined, size: 30),
+            ),
+            const SizedBox(
+              width: 20,
+            )
+          ],
+        ),
+        body: _BodyRouterCustomer());
   }
 }
 
+// el body  de mi Screen router
 class _BodyRouterCustomer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [CardClientRouter()],
+    return const Column(
+      children: [CardClientRouter(), CardClientRouter()],
     );
   }
 }
