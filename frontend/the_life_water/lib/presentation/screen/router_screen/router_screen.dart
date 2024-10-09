@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:the_life_water/presentation/widget/router_widgets_screen/card_client_router.dart';
+import 'package:go_router/go_router.dart';
 
 class RouterScreen extends StatelessWidget {
   const RouterScreen({super.key});
@@ -11,7 +11,9 @@ class RouterScreen extends StatelessWidget {
           title: const Text('The Life Water'),
           actions: <Widget>[
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                context.go('/');
+              },
               icon: const Icon(Icons.assignment_turned_in_outlined, size: 30),
             ),
             const SizedBox(
@@ -34,8 +36,10 @@ class RouterScreen extends StatelessWidget {
 class _BodyRouterCustomer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [CardClientRouter(), CardClientRouter()],
+    return Center(
+      child: ElevatedButton(
+          onPressed: () {},
+          child: const Icon(Icons.assignment_turned_in_outlined)),
     );
   }
 }

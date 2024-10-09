@@ -7,6 +7,7 @@ class CardClientRouter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
+        width: 390,
         margin: const EdgeInsets.only(bottom: 10, top: 5),
         decoration: BoxDecoration(
             color: Colors.black12, borderRadius: BorderRadius.circular(20)),
@@ -16,7 +17,20 @@ class CardClientRouter extends StatelessWidget {
               height: 10,
             ),
             _CardDataActionRouter(),
-            _CardDetailToBuy(),
+            Row(
+              children: [
+                _CardDetailToBuy(),
+                Center(
+                  child: FloatingActionButton(
+                    onPressed: () {},
+                    child: const Icon(
+                      Icons.edit,
+                      size: 30,
+                    ),
+                  ),
+                )
+              ],
+            ),
           ],
         ),
       ),
@@ -99,20 +113,20 @@ class _CardDetailToBuy extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SizedBox(
         height: 200,
-        width: 380,
+        width: 310,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Detalles de la compra:',
+                'Detalles de la compra',
                 style: TextStyle(fontSize: 20),
               ),
               SizedBox(height: 10),
-              Text('Estado del pago: Pagado', style: TextStyle(fontSize: 15)),
-              Text('Detaller: \n7x recargas de agua \n1x Dispenmsador de agua',
-                  style: TextStyle(fontSize: 15)),
+              Text('Estado del pago: Pagado', style: TextStyle(fontSize: 18)),
+              Text('7x recargas de agua \n1x Dispenmsador de agua',
+                  style: TextStyle(fontSize: 18)),
             ],
           ),
         ));

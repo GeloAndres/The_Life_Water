@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:the_life_water/presentation/widget/admin_screen_widget/box_bottom.dart';
 
 class AdminScreen extends StatelessWidget {
@@ -10,9 +11,9 @@ class AdminScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('The Life Water'),
         actions: <Widget>[
-          ElevatedButton(
+          IconButton(
             onPressed: () {},
-            child: const Icon(
+            icon: const Icon(
               Icons.assignment_turned_in_outlined,
               size: 30,
             ),
@@ -21,7 +22,9 @@ class AdminScreen extends StatelessWidget {
             width: 20,
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              context.go('/router');
+            },
             icon: const Icon(Icons.route_outlined, size: 30),
           ),
           const SizedBox(
@@ -113,15 +116,11 @@ class _DistributionBottom extends StatelessWidget {
                   _BottonPerosnalCustomBody(
                       iconData: Icons.person_add,
                       label: 'Crear nuevo cliente',
-                      voidCallback: () {
-                        print('boton de creacion de nuevo cliente');
-                      }),
+                      voidCallback: () {}),
                   _BottonPerosnalCustomBody(
                       iconData: Icons.description,
                       label: 'Generar Informe',
-                      voidCallback: () {
-                        print('bgenerador de informe');
-                      })
+                      voidCallback: () {})
                 ],
               ),
             ),
@@ -131,15 +130,11 @@ class _DistributionBottom extends StatelessWidget {
                   _BottonPerosnalCustomBody(
                       iconData: Icons.inventory_sharp,
                       label: 'Crear nuevo Producto',
-                      voidCallback: () {
-                        print('boton de creacion de nuevo producto');
-                      }),
+                      voidCallback: () {}),
                   _BottonPerosnalCustomBody(
-                      iconData: Icons.new_releases_outlined,
-                      label: '**Sin asignar**',
-                      voidCallback: () {
-                        print('sin asignar');
-                      })
+                      iconData: Icons.person,
+                      label: 'Ver clientes',
+                      voidCallback: () {})
                 ],
               ),
             )
@@ -153,9 +148,7 @@ class _BottomPlusClient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
-        print('add client to the router');
-      },
+      onPressed: () {},
       style: ElevatedButton.styleFrom(
           iconColor: Colors.teal,
           elevation: 10,
