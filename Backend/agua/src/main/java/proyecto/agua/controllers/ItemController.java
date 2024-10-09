@@ -21,12 +21,14 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
+    // Get de todos los items
     @GetMapping
     public ResponseEntity<List<ItemEntity>> getItems(){
         List<ItemEntity> items = itemService.getItems();
         return ResponseEntity.ok().body(items);
     }
 
+    // Post de un item
     @PostMapping
     public ResponseEntity<ItemEntity> saveItem(ItemEntity item){
         ItemEntity itemSaved = itemService.saveItem(item);
@@ -36,6 +38,7 @@ public class ItemController {
         return ResponseEntity.ok().body(itemSaved);
     }
 
+    // Get de un item por id
     @GetMapping("/{id}")
     public ResponseEntity<ItemEntity> getItemById(@PathVariable(value = "id") Long id){
         ItemEntity item = itemService.getItemById(id);
@@ -43,5 +46,12 @@ public class ItemController {
             return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.ok().body(item);
+    }
+
+    // Get de items por pedido
+    @GetMapping("/pedido/{id}")
+    public ResponseEntity<List<ItemEntity>> getItemsByPedido(@PathVariable(value = "id") Long id){
+        List<ItemEntity> items = itemService.getItemsByPedido(id);
+        return ResponseEntity.ok().body(items);
     }
 }

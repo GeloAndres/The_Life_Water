@@ -24,4 +24,12 @@ public class PedidoService {
     public PedidoEntity savePedido(PedidoEntity pedido){
         return pedidoRepository.save(pedido);
     }
+
+    public List<PedidoEntity> getPedidosByUsuario(Long id){
+        return pedidoRepository.findByUsuarioId(id);
+    }
+
+    public List<PedidoEntity> getPedidosByRuta(Long id){
+        return pedidoRepository.findByRutaId(id);
+    }
 }

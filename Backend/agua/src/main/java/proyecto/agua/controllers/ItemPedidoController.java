@@ -18,12 +18,14 @@ public class ItemPedidoController {
     @Autowired
     private ItemPedidoService itemPedidoService;
 
+    // Get de todos los itemPedidos
     @GetMapping
     public ResponseEntity<List<ItemPedidoEntity>> getItemPedidos(){
         List<ItemPedidoEntity> itemPedidos = itemPedidoService.getItemPedidos();
         return ResponseEntity.ok().body(itemPedidos);
     }
 
+    // Get de un itemPedido por id
     @GetMapping("/{id}")
     public ResponseEntity<ItemPedidoEntity> getItemPedidoById(@PathVariable(value = "id") Long id){
         ItemPedidoEntity itemPedido = itemPedidoService.getItemPedidoById(id);

@@ -24,4 +24,8 @@ public class ItemService {
     public ItemEntity saveItem(ItemEntity item){
         return itemRepository.save(item);
     }
+
+    public List<ItemEntity> getItemsByPedido(Long id){
+        return itemRepository.findByPedidoId(id);
+    }
 }

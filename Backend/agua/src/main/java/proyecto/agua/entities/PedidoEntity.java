@@ -26,6 +26,11 @@ public class PedidoEntity {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private UsuarioEntity id_usuario;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_ruta")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private UsuarioEntity id_ruta;
+
     private Date fecha;
 
     private boolean entregado;
