@@ -20,4 +20,8 @@ public class ItemService {
     public ItemEntity getItemById(Long id){
         return itemRepository.findById(id).get();
     }
+
+    public ItemEntity saveItem(ItemEntity item){
+        return itemRepository.save(item);
+    }
 }
