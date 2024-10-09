@@ -21,5 +21,6 @@ public class UbicacionEntity{
 
     private int latitud;
     private int longitud;
+    private String comuna;
 
 }
