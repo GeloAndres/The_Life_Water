@@ -10,27 +10,27 @@ final GoRouter router = GoRouter(
             const AdminScreen(),
         routes: <RouteBase>[
           GoRoute(
-            path: 'create-new-client',
+            path: 'createnewclient',
             builder: (BuildContext context, GoRouterState state) =>
                 const CreateNewClientScreen(),
           ),
           GoRoute(
-            path: 'generation-info',
+            path: 'generationinfo',
             builder: (BuildContext context, GoRouterState state) =>
                 const GenerationInfoScreen(),
           ),
           GoRoute(
-            path: 'create-new-product',
+            path: 'createnewproduct',
             builder: (BuildContext context, GoRouterState state) =>
                 const CreateNewProductScreen(),
           ),
           GoRoute(
-            path: 'watch-client',
+            path: 'watchclient',
             builder: (BuildContext context, GoRouterState state) =>
                 const WatchClientScreen(),
           ),
           GoRoute(
-            path: 'add-new-buy',
+            path: 'addnewbuy',
             builder: (BuildContext context, GoRouterState state) =>
                 const AddNewBuyToClientScreen(),
           ),

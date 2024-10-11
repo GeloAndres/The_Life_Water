@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:the_life_water/presentation/widget/admin_screen_widget/box_bottom.dart';
 
 class AdminScreen extends StatelessWidget {
   const AdminScreen({super.key});
@@ -105,40 +104,47 @@ class _StateConductor extends StatelessWidget {
 class _DistributionBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        width: 350,
+    return const SizedBox(
+        width: 360,
         height: 380,
-        child: Column(
-          children: [
-            Expanded(
-              child: Row(
-                children: [
-                  _BottonPerosnalCustomBody(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+          child: Column(
+            children: [
+              Expanded(
+                child: Row(
+                  children: [
+                    _BottonPerosnalCustomBody(
                       iconData: Icons.person_add,
                       label: 'Crear nuevo cliente',
-                      voidCallback: () {}),
-                  _BottonPerosnalCustomBody(
+                      ruta: '/createnewclient',
+                    ),
+                    _BottonPerosnalCustomBody(
                       iconData: Icons.description,
                       label: 'Generar Informe',
-                      voidCallback: () {})
-                ],
+                      ruta: '/generationinfo',
+                    )
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              child: Row(
-                children: [
-                  _BottonPerosnalCustomBody(
+              Expanded(
+                child: Row(
+                  children: [
+                    _BottonPerosnalCustomBody(
                       iconData: Icons.inventory_sharp,
                       label: 'Crear nuevo Producto',
-                      voidCallback: () {}),
-                  _BottonPerosnalCustomBody(
+                      ruta: '/createnewproduct',
+                    ),
+                    _BottonPerosnalCustomBody(
                       iconData: Icons.person,
                       label: 'Ver clientes',
-                      voidCallback: () {})
-                ],
-              ),
-            )
-          ],
+                      ruta: '/watchclient',
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ));
   }
 }
@@ -148,7 +154,9 @@ class _BottomPlusClient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        context.go('/addnewbuy');
+      },
       style: ElevatedButton.styleFrom(
           iconColor: Colors.teal,
           elevation: 10,
@@ -165,19 +173,36 @@ class _BottomPlusClient extends StatelessWidget {
 class _BottonPerosnalCustomBody extends StatelessWidget {
   final IconData iconData;
   final String label;
-  final VoidCallback voidCallback;
+  final String ruta;
 
   const _BottonPerosnalCustomBody(
-      {required this.iconData,
-      required this.label,
-      required this.voidCallback});
+      {required this.iconData, required this.label, required this.ruta});
 
   @override
   Widget build(BuildContext context) {
-    return BoxBottom(
-      dataIcon: iconData,
-      label: label,
-      actionFuntion: voidCallback,
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: ElevatedButton(
+            onPressed: () {
+              context.go(ruta);
+            },
+            style: ElevatedButton.styleFrom(
+                iconColor: Colors.blueGrey,
+                elevation: 3,
+                minimumSize: const Size(100, 100)),
+            child: Icon(
+              iconData,
+              size: 50,
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        Text(label),
+      ],
     );
   }
 }
