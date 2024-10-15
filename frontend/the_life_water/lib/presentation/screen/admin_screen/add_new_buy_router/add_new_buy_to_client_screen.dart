@@ -9,11 +9,7 @@ class AddNewBuyToClientScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Pantalla Agregar a ruta'),
       ),
-      body: Center(
-        child: ElevatedButton(
-            onPressed: () {},
-            child: const Icon(Icons.accessible_forward_sharp)),
-      ),
+      body: const Placeholder(),
     );
   }
 }
