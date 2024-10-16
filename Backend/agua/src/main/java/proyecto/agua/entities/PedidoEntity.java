@@ -29,7 +29,7 @@ public class PedidoEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_ruta")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private UsuarioEntity id_ruta;
+    private RutaEntity id_ruta;
 
     private Date fecha;
 
