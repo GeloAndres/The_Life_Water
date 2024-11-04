@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:go_router/go_router.dart';
 
-class WatchClientScreen extends StatelessWidget {
-  const WatchClientScreen({super.key});
+class ProductScreen extends StatelessWidget {
+  const ProductScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('The Life Water'),
+          title: const Text('Productos'),
         ),
         body: _BodyCustomerWatchClient());
   }
@@ -21,23 +21,23 @@ class _BodyCustomerWatchClient extends StatelessWidget {
     return Container(
       width: double.infinity,
       child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-        const Text('Clientes'),
+        const Text('Productos'),
         const SizedBox(
           height: 20,
         ),
         ElevatedButton(
             onPressed: () {
-              context.go('/watchclient/createnewclient');
+              // context.go('');
             },
-            child: const Text('Registrar nuevo Cliente')),
+            child: const Text('Registrar nuevo Producto')),
         const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Nombre'),
+            Text('Producto'),
             SizedBox(
               width: 70,
             ),
-            Text('Direccion')
+            Text('Valor'),
           ],
         ),
         const CircularProgressIndicator()

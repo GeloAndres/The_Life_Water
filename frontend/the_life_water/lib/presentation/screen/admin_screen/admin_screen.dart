@@ -45,11 +45,11 @@ class _CustomerBody extends StatelessWidget {
       height: double.infinity,
       child: Column(
         children: [
-          _StateConductor(),
-          _DistributionBottom(),
-          const SizedBox(
+          // _StateConductor(),
+          SizedBox(
             height: 40,
           ),
+          _DistributionBottom(),
           _BottomPlusClient()
         ],
       ),
@@ -65,7 +65,7 @@ class _StateConductor extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
           color: Colors.black12, borderRadius: BorderRadius.circular(30)),
-      margin: const EdgeInsets.only(top: 30, bottom: 20),
+      margin: const EdgeInsets.only(top: 30, bottom: 35),
       padding: const EdgeInsets.all(17),
       height: 105,
       width: 330,
@@ -106,45 +106,49 @@ class _DistributionBottom extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SizedBox(
         width: 360,
-        height: 380,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-          child: Column(
-            children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    _BottonPerosnalCustomBody(
-                      iconData: Icons.person_add,
-                      label: 'Crear nuevo cliente',
-                      ruta: '/createnewclient',
-                    ),
-                    _BottonPerosnalCustomBody(
-                      iconData: Icons.description,
-                      label: 'Generar Informe',
-                      ruta: '/generationinfo',
-                    )
-                  ],
-                ),
+        height: 400,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SizedBox(
+              width: 360,
+              height: 200,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _BottonPerosnalCustomBody(
+                    iconData: Icons.inventory_sharp,
+                    label: 'Pedidos',
+                    ruta: '/orders',
+                  ),
+                  _BottonPerosnalCustomBody(
+                    iconData: Icons.description,
+                    label: 'Informes',
+                    ruta: '/informe',
+                  )
+                ],
               ),
-              Expanded(
-                child: Row(
-                  children: [
-                    _BottonPerosnalCustomBody(
-                      iconData: Icons.inventory_sharp,
-                      label: 'Crear nuevo Producto',
-                      ruta: '/createnewproduct',
-                    ),
-                    _BottonPerosnalCustomBody(
-                      iconData: Icons.person,
-                      label: 'Ver clientes',
-                      ruta: '/watchclient',
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
+            ),
+            SizedBox(
+              width: 360,
+              height: 200,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _BottonPerosnalCustomBody(
+                    iconData: Icons.water_drop,
+                    label: 'Productos',
+                    ruta: '/product',
+                  ),
+                  _BottonPerosnalCustomBody(
+                    iconData: Icons.person,
+                    label: 'Ver clientes',
+                    ruta: '/watchclient',
+                  )
+                ],
+              ),
+            )
+          ],
         ));
   }
 }
@@ -160,10 +164,10 @@ class _BottomPlusClient extends StatelessWidget {
       style: ElevatedButton.styleFrom(
           iconColor: Colors.teal,
           elevation: 10,
-          minimumSize: const Size(100, 100)),
+          minimumSize: const Size(80, 80)),
       child: const Icon(
         Icons.add_road_outlined,
-        size: 50,
+        size: 40,
       ),
     );
   }
@@ -191,10 +195,10 @@ class _BottonPerosnalCustomBody extends StatelessWidget {
             style: ElevatedButton.styleFrom(
                 iconColor: Colors.blueGrey,
                 elevation: 3,
-                minimumSize: const Size(100, 100)),
+                minimumSize: const Size(80, 80)),
             child: Icon(
               iconData,
-              size: 50,
+              size: 40,
             ),
           ),
         ),
