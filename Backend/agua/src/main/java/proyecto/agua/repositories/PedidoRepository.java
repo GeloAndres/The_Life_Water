@@ -17,4 +17,7 @@ public interface PedidoRepository extends JpaRepository<PedidoEntity, Long> {
 
     @Query(value = "SELECT * FROM pedido WHERE id_ruta = :id_ruta", nativeQuery = true)
     List<PedidoEntity> findByRutaId(@Param("id_ruta") Long id_ruta);
+
+    @Query(value = "SELECT * FROM pedido order by fecha desc", nativeQuery = true)
+    List<PedidoEntity> getAllPedidos();
 }
