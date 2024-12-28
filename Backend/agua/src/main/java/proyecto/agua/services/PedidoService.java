@@ -14,7 +14,7 @@ public class PedidoService {
     private PedidoRepository pedidoRepository;
 
     public List<PedidoEntity> getPedidos(){
-        return pedidoRepository.findAll();
+        return pedidoRepository.getAllPedidos();
     }
 
     public PedidoEntity getPedidoById(Long id){

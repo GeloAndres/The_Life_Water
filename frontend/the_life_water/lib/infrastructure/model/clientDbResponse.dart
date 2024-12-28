@@ -1,32 +1,18 @@
+import 'package:the_life_water/domain/entities/client.dart';
+
 class ClientDbResponse {
-  final int id;
-  final String nombre;
-  final String apellido;
-  final int numTelefono;
-  final bool borrado;
+  final List<Client> clients;
 
-  ClientDbResponse({
-    required this.id,
-    required this.nombre,
-    required this.apellido,
-    required this.numTelefono,
-    required this.borrado,
-  });
+  ClientDbResponse({required this.clients});
 
-  factory ClientDbResponse.fromJson(Map<String, dynamic> json) =>
-      ClientDbResponse(
-        id: json["id"],
-        nombre: json["nombre"],
-        apellido: json["apellido"],
-        numTelefono: json["numTelefono"],
-        borrado: json["borrado"],
-      );
+  // Este factory method convierte un JSON en una lista de objetos Client
+  factory ClientDbResponse.fromJson(List<dynamic> jsonList) {
+    return ClientDbResponse(
+      clients: jsonList.map((json) => Client.fromJson(json)).toList(),
+    );
+  }
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "nombre": nombre,
-        "apellido": apellido,
-        "numTelefono": numTelefono,
-        "borrado": borrado,
+        "clients": clients.map((client) => client.toJson()).toList(),
       };
 }

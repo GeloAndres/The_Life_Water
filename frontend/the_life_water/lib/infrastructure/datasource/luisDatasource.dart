@@ -31,9 +31,24 @@ class Luisdatasource extends DatasourceModel {
   }
 
   @override
-  Future<List<Client>> getUser() {
-    // TODO: implement getUser
-    throw UnimplementedError();
+  Future<List<Client>> getUser() async {
+    try {
+      // Realizamos la petición GET al endpoint /clientes
+      final response = await dio.get('/usuario');
+
+      if (response.statusCode == 200) {
+        // Convertimos el JSON en una lista de objetos Client
+        final clientDbResponse = ClientDbResponse.fromJson(response.data);
+
+        return clientDbResponse.clients;
+      } else {
+        throw Exception(
+            'Error en la solicitud, status: ${response.statusCode}');
+      }
+    } catch (e) {
+      // En caso de error, lanzamos una excepción
+      throw Exception('Error al obtener los clientes: $e');
+    }
   }
 
   @override
