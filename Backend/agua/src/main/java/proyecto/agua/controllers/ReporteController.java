@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -24,8 +23,6 @@ import proyecto.agua.services.ExcelGenerator;
 @CrossOrigin(origins = "*")
 public class ReporteController {
     
-    @Autowired
-    private ExcelGenerator excelGenerator;
 
     // crear entidad ReporteModel
     private ReporteModel createReporte() {

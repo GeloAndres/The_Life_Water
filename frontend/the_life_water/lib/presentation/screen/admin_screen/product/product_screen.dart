@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:go_router/go_router.dart';
 
 class ProductScreen extends StatelessWidget {
@@ -10,6 +9,16 @@ class ProductScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Productos'),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  context.push('/product/create_new_product');
+                },
+                icon: const Icon(
+                  Icons.add_circle_outline,
+                  size: 30,
+                )),
+          ],
         ),
         body: _BodyCustomerWatchClient());
   }

@@ -15,10 +15,16 @@ final GoRouter router = GoRouter(
                 const GenerationInfoScreen(),
           ),
           GoRoute(
-            path: 'product',
-            builder: (BuildContext context, GoRouterState state) =>
-                const ProductScreen(),
-          ),
+              path: 'product',
+              builder: (BuildContext context, GoRouterState state) =>
+                  const ProductScreen(),
+              routes: [
+                GoRoute(
+                  path: 'create_new_product',
+                  builder: (BuildContext context, GoRouterState state) =>
+                      const CreateNewProductScreen(),
+                ),
+              ]),
           GoRoute(
               path: 'watchclient',
               builder: (BuildContext context, GoRouterState state) =>

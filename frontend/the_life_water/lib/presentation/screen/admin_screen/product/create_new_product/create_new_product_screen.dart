@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
 
-class CreateNewClientScreen extends StatelessWidget {
-  const CreateNewClientScreen({super.key});
+class CreateNewProductScreen extends StatelessWidget {
+  const CreateNewProductScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Pantalla Agregar a ruta'),
+          title: const Text('Creacion Nuevo Producto'),
         ),
-        body: _bodyCustomerCreateClient());
+        body: _BodyCustomerCreateClient());
   }
 }
 
-class _bodyCustomerCreateClient extends StatelessWidget {
+class _BodyCustomerCreateClient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text('Registrar Nuevo cliente'),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           _FormNewClient()
@@ -42,7 +41,7 @@ class _FormNewClientState extends State<_FormNewClient> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
         width: 350,
         height: 550,
@@ -51,19 +50,13 @@ class _FormNewClientState extends State<_FormNewClient> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const _textFormToNewClient(
-                  tipoDato: 'Nombre',
+                const _TextFormToNewClient(
+                  tipoDato: 'Nombre Producto',
                 ),
-                const _textFormToNewClient(
-                  tipoDato: 'Apellido',
+                const _TextFormToNewClient(
+                  tipoDato: 'Valor Producto',
                 ),
-                const _textFormToNewClient(
-                  tipoDato: 'Numero de contacto',
-                ),
-                const _textFormToNewClient(
-                  tipoDato: 'Ubicacion',
-                ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 ElevatedButton(
@@ -77,8 +70,8 @@ class _FormNewClientState extends State<_FormNewClient> {
   }
 }
 
-class _textFormToNewClient extends StatelessWidget {
-  const _textFormToNewClient({required this.tipoDato});
+class _TextFormToNewClient extends StatelessWidget {
+  const _TextFormToNewClient({required this.tipoDato});
 
   final String tipoDato;
 

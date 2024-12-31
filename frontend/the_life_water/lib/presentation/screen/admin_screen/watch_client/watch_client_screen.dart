@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:the_life_water/config/router/router.dart';
 import 'package:the_life_water/infrastructure/datasource/luisDatasource.dart';
 import 'package:the_life_water/domain/entities/client.dart'; // Asegúrate de importar el modelo Client
 import 'package:the_life_water/presentation/screen/admin_screen/watch_client/client_detail_screen.dart';
@@ -32,6 +34,16 @@ class _WatchClientScreenState extends State<WatchClientScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Clientes'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                context.push('/watchclient/createnewclient');
+              },
+              icon: const Icon(
+                Icons.add_circle_outline,
+                size: 30,
+              )),
+        ],
       ),
       body: Center(
         child: FutureBuilder<List<Client>>(
