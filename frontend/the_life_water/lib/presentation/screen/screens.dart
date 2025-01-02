@@ -4,7 +4,6 @@ export 'package:the_life_water/presentation/screen/admin_screen/watch_client/cre
 export 'package:the_life_water/presentation/screen/admin_screen/product/product_screen.dart';
 export 'package:the_life_water/presentation/screen/admin_screen/generation_inf/generation_info_screen.dart';
 export 'package:the_life_water/presentation/screen/admin_screen/watch_client/watch_client_screen.dart';
-export 'package:the_life_water/presentation/screen/testingScreen/testingScreen.dart';
 export 'package:the_life_water/presentation/screen/admin_screen/admin_screen.dart';
 export 'package:the_life_water/presentation/screen/router_screen/router_screen.dart';
 export 'package:the_life_water/presentation/screen/admin_screen/product/create_new_product/create_new_product_screen.dart';

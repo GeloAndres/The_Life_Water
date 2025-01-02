@@ -4,7 +4,7 @@ import 'package:the_life_water/domain/entities/client.dart'; // Importar el mode
 class ClientDetailsScreen extends StatelessWidget {
   final Client client;
 
-  const ClientDetailsScreen({Key? key, required this.client}) : super(key: key);
+  const ClientDetailsScreen({super.key, required this.client});
 
   @override
   Widget build(BuildContext context) {
@@ -17,18 +17,19 @@ class ClientDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('ID: ${client.id}', style: TextStyle(fontSize: 18)),
+            Text('ID: ${client.id}', style: const TextStyle(fontSize: 18)),
             const SizedBox(height: 8),
-            Text('Nombre: ${client.nombre}', style: TextStyle(fontSize: 18)),
+            Text('Nombre: ${client.nombre}',
+                style: const TextStyle(fontSize: 18)),
             const SizedBox(height: 8),
             Text('Apellido: ${client.apellido}',
-                style: TextStyle(fontSize: 18)),
+                style: const TextStyle(fontSize: 18)),
             const SizedBox(height: 8),
             Text('Teléfono: ${client.numTelefono}',
-                style: TextStyle(fontSize: 18)),
+                style: const TextStyle(fontSize: 18)),
             const SizedBox(height: 8),
             Text('Borrado: ${client.borrado ? "Sí" : "No"}',
-                style: TextStyle(fontSize: 18)),
+                style: const TextStyle(fontSize: 18)),
           ],
         ),
       ),

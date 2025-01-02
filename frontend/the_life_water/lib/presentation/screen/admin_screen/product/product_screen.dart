@@ -27,7 +27,7 @@ class ProductScreen extends StatelessWidget {
 class _BodyCustomerWatchClient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
         const Text('Productos'),
@@ -56,9 +56,9 @@ class _BodyCustomerWatchClient extends StatelessWidget {
 }
 
 //TODO: regristrador de cliente
-class _RegistrarCliente extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: () {}, child: Text('Registrar Cliente'));
-  }
-}
+// class _RegistrarCliente extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return ElevatedButton(onPressed: () {}, child: const Text('Registrar Cliente'));
+//   }
+// }

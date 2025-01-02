@@ -5,15 +5,6 @@ class ClientRepositorieImpl extends Repositorie {
   final DatasourceModel datasource;
 
   ClientRepositorieImpl({required this.datasource});
-  @override
-  Future deleteItem() {
-    return datasource.deleteItem();
-  }
-
-  @override
-  Future getItem() {
-    return datasource.getItem();
-  }
 
   @override
   Future getUser() {
@@ -26,12 +17,25 @@ class ClientRepositorieImpl extends Repositorie {
   }
 
   @override
-  Future postItem() {
-    return datasource.postItem();
+  Future postUser() {
+    return datasource.postUser();
   }
 
   @override
-  Future postUser() {
-    return datasource.postUser();
+  Future deleteItem() {
+    // TODO: implement deleteItem
+    throw UnimplementedError();
+  }
+
+  @override
+  Future getItem() {
+    // TODO: implement getItem
+    throw UnimplementedError();
+  }
+
+  @override
+  Future postItem() {
+    // TODO: implement postItem
+    throw UnimplementedError();
   }
 }

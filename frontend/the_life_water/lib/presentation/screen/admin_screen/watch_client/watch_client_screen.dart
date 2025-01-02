@@ -1,31 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:the_life_water/config/router/router.dart';
 import 'package:the_life_water/infrastructure/datasource/luisDatasource.dart';
-import 'package:the_life_water/domain/entities/client.dart'; // Asegúrate de importar el modelo Client
+import 'package:the_life_water/domain/entities/client.dart';
 import 'package:the_life_water/presentation/screen/admin_screen/watch_client/client_detail_screen.dart';
 
 class WatchClientScreen extends StatefulWidget {
   const WatchClientScreen({super.key});
 
   @override
-  _WatchClientScreenState createState() => _WatchClientScreenState();
+  WatchClientScreenState createState() => WatchClientScreenState();
 }
 
-class _WatchClientScreenState extends State<WatchClientScreen> {
+class WatchClientScreenState extends State<WatchClientScreen> {
   Future<List<Client>>? _futureClients;
 
   @override
   void initState() {
     super.initState();
-    _fetchClients(); // Llamar a la función para obtener clientes cuando la pantalla se inicializa
+    _fetchClients();
   }
 
   void _fetchClients() {
     setState(() {
       Luisdatasource luisdatasource = Luisdatasource();
-      _futureClients = luisdatasource
-          .getUser(); // Llamar a la función getUser para obtener los clientes
+      _futureClients = luisdatasource.getUser();
     });
   }
 
