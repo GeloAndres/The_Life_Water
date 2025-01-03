@@ -22,6 +22,7 @@ class Luisdatasource extends DatasourceModel {
 
         //transfomamos el iterable del modelo y lo mappeamos para hacer mach con la entidad Client
         final List<Client> listClientFinal = listClientResponse
+            .where((x) => x.id != 0)
             .map((client) => ClientMapper().toEntiti(client))
             .toList();
         return listClientFinal;
