@@ -4,6 +4,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:the_life_water/domain/entities/client.dart';
 import 'package:the_life_water/infrastructure/datasource/luisDatasource.dart';
+import 'package:the_life_water/infrastructure/repositories/client_repositorie_impl.dart';
 
 class CreateNewClientScreen extends StatelessWidget {
   const CreateNewClientScreen({super.key});
@@ -56,6 +57,8 @@ class _FormNewClient extends StatefulWidget {
 
 class _FormNewClientState extends State<_FormNewClient> {
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
+  ClientRepositorieImpl luisDatasource =
+      ClientRepositorieImpl(datasource: Luisdatasource());
 
   @override
   void initState() {
@@ -64,9 +67,7 @@ class _FormNewClientState extends State<_FormNewClient> {
   }
 
   void _saveNewClient() {
-    setState(() {
-      Luisdatasource luisdatasource = Luisdatasource();
-    });
+    setState(() {});
   }
 
   @override
@@ -131,7 +132,6 @@ class _FormNewClientState extends State<_FormNewClient> {
               onPressed: () async {
                 _formKey.currentState!.save();
                 if (_formKey.currentState!.validate() == true) {
-                  print(_formKey.currentState!.value);
                   final formData = _formKey.currentState!.value;
 
                   final newClient = Client(
@@ -139,10 +139,11 @@ class _FormNewClientState extends State<_FormNewClient> {
                       apellido: formData['sector'],
                       numTelefono: formData['numero'],
                       borrado: false,
-                      id: 0);
+                      id: 23);
 
-                  print(formData);
-                  print(newClient);
+                  luisDatasource.createNewClient(newClient);
+                  print(_formKey.currentState!.value);
+                  print('proceso terminado');
                 }
               },
               shape: RoundedRectangleBorder(

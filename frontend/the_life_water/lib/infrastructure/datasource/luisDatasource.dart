@@ -48,8 +48,23 @@ class Luisdatasource extends DatasourceModel {
   }
 
   @override
-  Future<void> createNewClient(Client newClient) {
-    // TODO: implement createNewClient
-    throw UnimplementedError();
+  Future<void> createNewClient(Client newClient) async {
+    print(newClient.toString());
+    try {
+      final response = await dio.post('/usuario', data: {
+        "nombre": 'Usuario de prueba',
+        "apellido": 'extension apellido',
+        "numTelefono": '123123123'
+      });
+
+      if (response.statusCode == 201) {
+        print('Usuario creado: ${response.data}');
+        return response.data;
+      }
+
+      print('no salio como queriamos: ${response.statusCode}');
+    } catch (e) {
+      throw Exception('Error al obtener los clientes: $e');
+    }
   }
 }
