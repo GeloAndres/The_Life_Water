@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:the_life_water/infrastructure/datasource/luisDatasource.dart';
 import 'package:the_life_water/domain/entities/client.dart';
+import 'package:the_life_water/infrastructure/repositories/client_repositorie_impl.dart';
 import 'package:the_life_water/presentation/screen/admin_screen/watch_client/client_detail_screen.dart';
 
 class WatchClientScreen extends StatefulWidget {
@@ -13,7 +14,8 @@ class WatchClientScreen extends StatefulWidget {
 
 class WatchClientScreenState extends State<WatchClientScreen> {
   Future<List<Client>>? _futureClients;
-
+  final ClientRepositorieImpl repository =
+      ClientRepositorieImpl(datasource: Luisdatasource());
   @override
   void initState() {
     super.initState();
@@ -22,8 +24,7 @@ class WatchClientScreenState extends State<WatchClientScreen> {
 
   void _fetchClients() {
     setState(() {
-      Luisdatasource luisdatasource = Luisdatasource();
-      _futureClients = luisdatasource.getUser();
+      _futureClients = repository.getUser();
     });
   }
 

@@ -1,18 +1,41 @@
-import 'package:the_life_water/domain/entities/client.dart';
+import 'dart:convert';
 
-class ClientDbResponse {
-  final List<Client> clients;
+List<Clientdbresponse> clientesFromJson(String str) =>
+    List<Clientdbresponse>.from(
+        json.decode(str).map((x) => Clientdbresponse.fromJson(x)));
 
-  ClientDbResponse({required this.clients});
+String clientesToJson(List<Clientdbresponse> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-  // Este factory method convierte un JSON en una lista de objetos Client
-  factory ClientDbResponse.fromJson(List<dynamic> jsonList) {
-    return ClientDbResponse(
-      clients: jsonList.map((json) => Client.fromJson(json)).toList(),
-    );
-  }
+class Clientdbresponse {
+  final int id;
+  final String nombre;
+  final String apellido;
+  final int numTelefono;
+  final bool borrado;
+
+  Clientdbresponse({
+    required this.id,
+    required this.nombre,
+    required this.apellido,
+    required this.numTelefono,
+    required this.borrado,
+  });
+
+  factory Clientdbresponse.fromJson(Map<String, dynamic> json) =>
+      Clientdbresponse(
+        id: json["id"],
+        nombre: json["nombre"],
+        apellido: json["apellido"],
+        numTelefono: json["numTelefono"],
+        borrado: json["borrado"],
+      );
 
   Map<String, dynamic> toJson() => {
-        "clients": clients.map((client) => client.toJson()).toList(),
+        "id": id,
+        "nombre": nombre,
+        "apellido": apellido,
+        "numTelefono": numTelefono,
+        "borrado": borrado,
       };
 }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:the_life_water/domain/entities/client.dart';
+import 'package:the_life_water/infrastructure/datasource/luisDatasource.dart';
 
 class CreateNewClientScreen extends StatelessWidget {
   const CreateNewClientScreen({super.key});
@@ -54,6 +56,19 @@ class _FormNewClient extends StatefulWidget {
 
 class _FormNewClientState extends State<_FormNewClient> {
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _saveNewClient();
+  }
+
+  void _saveNewClient() {
+    setState(() {
+      Luisdatasource luisdatasource = Luisdatasource();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return FormBuilder(
@@ -88,6 +103,10 @@ class _FormNewClientState extends State<_FormNewClient> {
                 FormBuilderValidators.minLength(9,
                     errorText: 'Debe tener al menos 9 dígitos'),
               ]),
+              valueTransformer: (value) {
+                if (value == null || value.isEmpty) return null;
+                return int.tryParse(value);
+              },
             ),
             const SizedBox(
               height: 10,
@@ -109,10 +128,21 @@ class _FormNewClientState extends State<_FormNewClient> {
             MaterialButton(
               minWidth: 340,
               color: Colors.blue,
-              onPressed: () {
+              onPressed: () async {
                 _formKey.currentState!.save();
                 if (_formKey.currentState!.validate() == true) {
                   print(_formKey.currentState!.value);
+                  final formData = _formKey.currentState!.value;
+
+                  final newClient = Client(
+                      nombre: formData['nombre'],
+                      apellido: formData['sector'],
+                      numTelefono: formData['numero'],
+                      borrado: false,
+                      id: 0);
+
+                  print(formData);
+                  print(newClient);
                 }
               },
               shape: RoundedRectangleBorder(

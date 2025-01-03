@@ -1,10 +1,9 @@
+import 'package:the_life_water/domain/entities/client.dart';
+
 abstract class Repositorie {
   //Clientes
   Future<dynamic> getUser();
   Future<dynamic> postUser();
   Future<dynamic> getUserByID();
-  //Productos
-  Future<dynamic> getItem();
-  Future<dynamic> deleteItem();
-  Future<dynamic> postItem();
+  Future<void> createNewClient(Client newClient);
 }
