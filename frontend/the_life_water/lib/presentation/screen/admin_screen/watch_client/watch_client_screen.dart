@@ -49,16 +49,12 @@ class WatchClientScreenState extends State<WatchClientScreen> {
           future: _futureClients,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              // Mostrar un indicador de carga mientras se obtienen los datos
               return const CircularProgressIndicator();
             } else if (snapshot.hasError) {
-              // Mostrar un mensaje si hay un error
               return Text('Error: ${snapshot.error}');
             } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              // Si no hay clientes o no se encontraron
               return const Text('No hay clientes disponibles');
             } else {
-              // Mostrar la lista de clientes cuando los datos se obtienen correctamente
               final clients = snapshot.data!;
               return Center(
                 child: SizedBox(
@@ -71,7 +67,6 @@ class WatchClientScreenState extends State<WatchClientScreen> {
                         title: Text('${client.nombre} ${client.apellido}'),
                         subtitle: Text('Teléfono: ${client.numTelefono}'),
                         onTap: () {
-                          // Navegar a la pantalla de detalles cuando se hace clic
                           Navigator.push(
                             context,
                             MaterialPageRoute(

@@ -1,12 +1,3 @@
-import 'dart:convert';
-
-List<Clientdbresponse> clientesFromJson(String str) =>
-    List<Clientdbresponse>.from(
-        json.decode(str).map((x) => Clientdbresponse.fromJson(x)));
-
-String clientesToJson(List<Clientdbresponse> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
 class Clientdbresponse {
   final int id;
   final String nombre;
