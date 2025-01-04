@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import proyecto.agua.entities.PedidoEntity;
@@ -30,7 +31,7 @@ public class PedidoController {
 
     // Post de un pedido
     @PostMapping
-    public ResponseEntity<PedidoEntity> savePedido(PedidoEntity pedido){
+    public ResponseEntity<PedidoEntity> savePedido(@RequestBody PedidoEntity pedido){
         PedidoEntity pedidoSaved = pedidoService.savePedido(pedido);
         if(pedidoSaved == null){
             return ResponseEntity.badRequest().build();
