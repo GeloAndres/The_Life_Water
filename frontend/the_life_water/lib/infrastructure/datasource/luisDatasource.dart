@@ -49,22 +49,26 @@ class Luisdatasource extends DatasourceModel {
 
   @override
   Future<void> createNewClient(Client newClient) async {
-    print(newClient.toString());
     try {
-      final response = await dio.post('/usuario', data: {
-        "nombre": 'Usuario de prueba',
-        "apellido": 'extension apellido',
-        "numTelefono": '123123123'
-      });
+      final response = await dio.post(
+        '/usuario',
+        data: {
+          "id": newClient.id,
+          "nombre": newClient.nombre,
+          "apellido": newClient.apellido,
+          "numTelefono": newClient.numTelefono,
+          "borrado": newClient.borrado,
+        },
+      );
 
       if (response.statusCode == 201) {
         print('Usuario creado: ${response.data}');
         return response.data;
+      } else {
+        print('No salió como esperábamos: ${response.statusCode}');
       }
-
-      print('no salio como queriamos: ${response.statusCode}');
     } catch (e) {
-      throw Exception('Error al obtener los clientes: $e');
+      throw Exception('Error al crear el cliente: $e');
     }
   }
 }
