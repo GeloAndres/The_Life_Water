@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class ProductScreen extends StatelessWidget {
+class ProductScreen extends StatefulWidget {
   const ProductScreen({super.key});
 
+  @override
+  State<ProductScreen> createState() => _ProductScreenState();
+}
+
+class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,19 +32,13 @@ class ProductScreen extends StatelessWidget {
 class _BodyCustomerWatchClient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
       width: double.infinity,
       child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-        const Text('Productos'),
-        const SizedBox(
+        SizedBox(
           height: 20,
         ),
-        ElevatedButton(
-            onPressed: () {
-              // context.go('');
-            },
-            child: const Text('Registrar nuevo Producto')),
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Producto'),
@@ -49,16 +48,8 @@ class _BodyCustomerWatchClient extends StatelessWidget {
             Text('Valor'),
           ],
         ),
-        const CircularProgressIndicator()
+        CircularProgressIndicator()
       ]),
     );
   }
 }
-
-//TODO: regristrador de cliente
-// class _RegistrarCliente extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return ElevatedButton(onPressed: () {}, child: const Text('Registrar Cliente'));
-//   }
-// }

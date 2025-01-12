@@ -15,7 +15,7 @@ class Clientdbresponse {
 
   factory Clientdbresponse.fromJson(Map<String, dynamic> json) =>
       Clientdbresponse(
-        id: json["id"] ?? 0,
+        id: json["id"],
         nombre: json["nombre"],
         apellido: json["apellido"],
         numTelefono: json["numTelefono"],

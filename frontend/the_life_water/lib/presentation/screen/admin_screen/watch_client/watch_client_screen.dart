@@ -1,39 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:the_life_water/infrastructure/datasource/luisDatasource.dart';
 import 'package:the_life_water/domain/entities/client.dart';
-import 'package:the_life_water/infrastructure/repositories/client_repositorie_impl.dart';
+import 'package:the_life_water/presentation/Provider/cliente_provider.dart';
 import 'package:the_life_water/presentation/screen/admin_screen/watch_client/client_detail_screen.dart';
 
-class WatchClientScreen extends StatefulWidget {
+class WatchClientScreen extends ConsumerStatefulWidget {
   const WatchClientScreen({super.key});
 
   @override
-  WatchClientScreenState createState() => WatchClientScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      WatchClientScreenState();
 }
 
-class WatchClientScreenState extends State<WatchClientScreen> {
-  Future<List<Client>>? _futureClients;
-  final ClientRepositorieImpl repository =
-      ClientRepositorieImpl(datasource: Luisdatasource());
+class WatchClientScreenState extends ConsumerState<WatchClientScreen> {
   @override
   void initState() {
     super.initState();
-    _fetchClients();
-  }
-
-  void _fetchClients() {
-    setState(() {
-      _futureClients = repository.getUser();
-    });
   }
 
   @override
   Widget build(BuildContext context) {
+    final clientList = ref.watch(clienteRepositoryProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Clientes'),
         actions: [
+          IconButton(
+              onPressed: () {
+                setState(() {});
+              },
+              icon: const Icon(
+                Icons.refresh,
+                size: 30,
+              )),
           IconButton(
               onPressed: () {
                 context.push('/watchclient/createnewclient');
@@ -46,7 +47,7 @@ class WatchClientScreenState extends State<WatchClientScreen> {
       ),
       body: Center(
         child: FutureBuilder<List<Client>>(
-          future: _futureClients,
+          future: clientList.getUser(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const CircularProgressIndicator();

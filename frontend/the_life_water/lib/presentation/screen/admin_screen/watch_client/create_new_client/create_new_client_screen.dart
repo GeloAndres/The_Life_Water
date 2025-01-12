@@ -134,16 +134,21 @@ class _FormNewClientState extends State<_FormNewClient> {
                 if (_formKey.currentState!.validate() == true) {
                   final formData = _formKey.currentState!.value;
 
-                  final newClient = Client(
+                  final Client newClient = Client(
                       nombre: formData['nombre'],
                       apellido: formData['sector'],
                       numTelefono: formData['numero'],
                       borrado: false,
-                      id: 23);
+                      id: 0);
 
-                  luisDatasource.createNewClient(newClient);
-                  print(_formKey.currentState!.value);
-                  print('proceso terminado');
+                  final result = luisDatasource.createNewClient(newClient);
+
+                  print(
+                      'proceso creacion de cliente terminado, resultado: $result');
+
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      duration: Duration(seconds: 3),
+                      content: Text('Creado Correctamente')));
                 }
               },
               shape: RoundedRectangleBorder(
@@ -194,4 +199,13 @@ InputDecoration decorationForm(
     contentPadding:
         const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
   );
+}
+
+class FinishProcessing extends StatelessWidget {
+  const FinishProcessing({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Placeholder();
+  }
 }

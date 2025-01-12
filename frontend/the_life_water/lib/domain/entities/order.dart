@@ -7,7 +7,7 @@ class Order {
   final DateTime diaVenta;
   final DateTime diaEntrega;
   final List<Product> listaCompra;
-  final int? asignacionRuta;
+  final int asignacionRuta;
 
   Order(
       {required this.idCompra,
@@ -16,5 +16,5 @@ class Order {
       required this.diaVenta,
       required this.diaEntrega,
       required this.listaCompra,
-      this.asignacionRuta});
+      required this.asignacionRuta});
 }

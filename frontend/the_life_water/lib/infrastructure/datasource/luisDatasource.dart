@@ -61,7 +61,7 @@ class Luisdatasource extends DatasourceModel {
         },
       );
 
-      if (response.statusCode == 201) {
+      if (response.statusCode == 201 || response.statusCode == 200) {
         print('Usuario creado: ${response.data}');
         return response.data;
       } else {
