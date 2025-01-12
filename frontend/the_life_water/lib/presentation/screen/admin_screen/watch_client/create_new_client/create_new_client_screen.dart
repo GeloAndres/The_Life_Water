@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:the_life_water/domain/entities/client.dart';
 import 'package:the_life_water/infrastructure/datasource/luisDatasource.dart';
 import 'package:the_life_water/infrastructure/repositories/client_repositorie_impl.dart';
+import 'package:go_router/go_router.dart';
 
 class CreateNewClientScreen extends StatelessWidget {
   const CreateNewClientScreen({super.key});
@@ -149,6 +150,7 @@ class _FormNewClientState extends State<_FormNewClient> {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                       duration: Duration(seconds: 3),
                       content: Text('Creado Correctamente')));
+                  GoRouter.of(context).pop();
                 }
               },
               shape: RoundedRectangleBorder(
