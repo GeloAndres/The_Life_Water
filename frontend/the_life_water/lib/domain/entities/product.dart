@@ -2,7 +2,7 @@ class Product {
   final int id;
   final String nombre;
   final String description;
-  final int precio;
+  final double precio;
   final bool borrado;
 
   Product(

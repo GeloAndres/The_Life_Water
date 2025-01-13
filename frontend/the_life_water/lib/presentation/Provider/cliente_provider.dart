@@ -5,3 +5,7 @@ import 'package:the_life_water/infrastructure/repositories/client_repositorie_im
 final clienteRepositoryProvider = Provider((ref) {
   return ClientRepositorieImpl(datasource: Luisdatasource());
 });
+
+final productRepositoryProvider = Provider((ref) {
+  return ClientRepositorieImpl(datasource: Luisdatasource());
+});

@@ -1,5 +1,6 @@
 import 'package:the_life_water/domain/databases/datasource_model.dart';
 import 'package:the_life_water/domain/entities/client.dart';
+import 'package:the_life_water/domain/entities/product.dart';
 import 'package:the_life_water/domain/repositories/repositorie.dart';
 
 class ClientRepositorieImpl extends Repositorie {
@@ -27,5 +28,17 @@ class ClientRepositorieImpl extends Repositorie {
   Future postUser() {
     // TODO: implement postUser
     throw UnimplementedError();
+  }
+
+  //sector de producto
+  @override
+  Future<void> createNewProduct(Product newProduct) {
+    // TODO: implement createNewProduct
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<Product>> getProduct() {
+    return datasource.getProduct();
   }
 }

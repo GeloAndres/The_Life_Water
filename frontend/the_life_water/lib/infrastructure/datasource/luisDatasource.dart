@@ -1,8 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:the_life_water/domain/databases/datasource_model.dart';
 import 'package:the_life_water/domain/entities/client.dart';
+import 'package:the_life_water/domain/entities/product.dart';
 import 'package:the_life_water/infrastructure/mappers/client_mapper.dart';
+import 'package:the_life_water/infrastructure/mappers/producto_mapper.dart';
 import 'package:the_life_water/infrastructure/model/clientDbResponse.dart';
+import 'package:the_life_water/infrastructure/model/producto_db_response.dart';
 
 class Luisdatasource extends DatasourceModel {
   final dio = Dio(BaseOptions(baseUrl: 'http://localhost:8090'));
@@ -69,6 +72,39 @@ class Luisdatasource extends DatasourceModel {
       }
     } catch (e) {
       throw Exception('Error al crear el cliente: $e');
+    }
+  }
+
+  //Sector de Productos
+
+  @override
+  Future<void> createNewProduct() {
+    // TODO: implement createNewProduct
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<Product>> getProduct() async {
+    try {
+      final response = await dio.get('/item');
+
+      if (response.statusCode == 200) {
+        final List<dynamic> jsonList = response.data;
+
+        final Iterable<ProductoDbResponse> productListResponse =
+            jsonList.map((json) => ProductoDbResponse.fromJson(json));
+
+        final List<Product> listProductFinal = productListResponse
+            .where((x) => x.id != 0)
+            .map((product) => ProductoMapper().toEntiti(product))
+            .toList();
+        return listProductFinal;
+      } else {
+        throw Exception(
+            'Error en la solicitud, status: ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('Error al obtener los clientes: $e');
     }
   }
 }

@@ -11,6 +11,16 @@ class ClientDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('${client.nombre} ${client.apellido}'),
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.delete)),
+          const SizedBox(
+            width: 20,
+          ),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.update)),
+          const SizedBox(
+            width: 10,
+          )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
