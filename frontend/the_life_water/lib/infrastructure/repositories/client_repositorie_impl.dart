@@ -33,8 +33,7 @@ class ClientRepositorieImpl extends Repositorie {
   //sector de producto
   @override
   Future<void> createNewProduct(Product newProduct) {
-    // TODO: implement createNewProduct
-    throw UnimplementedError();
+    return datasource.createNewProduct(newProduct);
   }
 
   @override

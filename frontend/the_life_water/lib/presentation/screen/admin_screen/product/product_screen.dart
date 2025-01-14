@@ -36,7 +36,7 @@ class WatchProductScreenState extends ConsumerState<ProductScreen> {
               )),
           IconButton(
               onPressed: () {
-                //TODO: pagina de creacion de nuevo producto
+                context.go('/product/create_new_product');
               },
               icon: const Icon(
                 Icons.add_circle_outline,
@@ -66,7 +66,7 @@ class WatchProductScreenState extends ConsumerState<ProductScreen> {
                         leading: const Icon(Icons.water_drop_outlined),
                         title: Text(product.nombre),
                         trailing: Text(
-                          'CLP ${product.precio.truncate()}',
+                          '${product.precio.truncate()} CLP',
                           style: const TextStyle(fontSize: 15),
                         ),
                         onTap: () {

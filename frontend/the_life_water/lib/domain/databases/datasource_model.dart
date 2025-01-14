@@ -10,5 +10,5 @@ abstract class DatasourceModel {
 
   //Productos
   Future<List<Product>> getProduct();
-  Future<void> createNewProduct();
+  Future<void> createNewProduct(Product newProduct);
 }

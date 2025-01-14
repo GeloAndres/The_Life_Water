@@ -76,11 +76,24 @@ class Luisdatasource extends DatasourceModel {
   }
 
   //Sector de Productos
-
   @override
-  Future<void> createNewProduct() {
-    // TODO: implement createNewProduct
-    throw UnimplementedError();
+  Future<void> createNewProduct(Product newProduct) async {
+    try {
+      final response = await dio.post('/item', data: {
+        "id": 0,
+        "nombre": newProduct.nombre,
+        "descripcion": newProduct.description,
+        "precio": newProduct.precio,
+        "borrado": false
+      });
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        print('Usuario creado: ${response.data}');
+        return response.data;
+      }
+    } catch (e) {
+      throw Exception('Error al crear el cliente: $e');
+    }
   }
 
   @override
