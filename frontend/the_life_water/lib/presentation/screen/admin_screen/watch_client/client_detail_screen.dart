@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:the_life_water/domain/entities/client.dart'; // Importar el modelo Client
+import 'package:the_life_water/domain/entities/client.dart';
+import 'package:the_life_water/presentation/screen/admin_screen/watch_client/update_client/update_client.dart'; // Importar el modelo Client
 
 class ClientDetailsScreen extends StatelessWidget {
   final Client client;
@@ -16,7 +17,18 @@ class ClientDetailsScreen extends StatelessWidget {
           const SizedBox(
             width: 20,
           ),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.update)),
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => UpdateClient(
+                      cliente: client,
+                    ),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.edit)),
           const SizedBox(
             width: 10,
           )
