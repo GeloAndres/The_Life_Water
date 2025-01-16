@@ -31,7 +31,6 @@ public class UsuarioController {
     @PostMapping
     public ResponseEntity<UsuarioEntity> saveUsuario(@RequestBody UsuarioEntity usuario){
         UsuarioEntity usuarioSaved = usuarioService.saveUsuario(usuario);
-        System.out.println("Usuario a guardar: " + usuario);
         if(usuarioSaved == null){
             return ResponseEntity.badRequest().build();
         }
@@ -45,5 +44,12 @@ public class UsuarioController {
             return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.ok().body(usuario);
+    }
+
+    // borrar usuario
+    @PostMapping("/delete")
+    public ResponseEntity<String> deleteUsuario(@RequestBody UsuarioEntity usuario){
+        usuarioService.deleteUsuario(usuario);
+        return ResponseEntity.ok().body("Usuario eliminado");
     }
 }

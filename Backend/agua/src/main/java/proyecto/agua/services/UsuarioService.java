@@ -14,7 +14,7 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     public List<UsuarioEntity> getUsuarios(){
-        return usuarioRepository.findAll();
+        return usuarioRepository.getUsuarios();
     }
 
     public UsuarioEntity getUsuarioById(Long id){
@@ -23,6 +23,12 @@ public class UsuarioService {
 
     public UsuarioEntity saveUsuario(UsuarioEntity usuario){
         return usuarioRepository.save(usuario);
+    }
+
+    public void deleteUsuario(UsuarioEntity usuario) {
+        UsuarioEntity usuarioToDelete = usuarioRepository.findById(usuario.getId()).get();
+        usuarioToDelete.setBorrado(true);
+        usuarioRepository.save(usuarioToDelete);
     }
 
 }

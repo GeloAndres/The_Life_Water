@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import proyecto.agua.entities.ItemPedidoEntity;
@@ -35,5 +37,15 @@ public class ItemPedidoController {
             return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.ok().body(itemPedido);
+    }
+
+    // Save de un itemPedido
+    @PostMapping    
+    public ResponseEntity<ItemPedidoEntity> saveItemPedido(@RequestBody ItemPedidoEntity itemPedido){
+        ItemPedidoEntity itemPedidoSaved = itemPedidoService.saveItemPedido(itemPedido);
+        if(itemPedidoSaved == null){
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok().body(itemPedidoSaved);
     }
 }

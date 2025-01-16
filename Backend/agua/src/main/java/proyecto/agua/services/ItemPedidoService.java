@@ -20,4 +20,8 @@ public class ItemPedidoService {
     public ItemPedidoEntity getItemPedidoById(Long id){
         return itemPedidoRepository.findById(id).get();
     }
+
+    public ItemPedidoEntity saveItemPedido(ItemPedidoEntity itemPedido) {
+        return itemPedidoRepository.save(itemPedido);
+    }
 }

@@ -31,7 +31,8 @@ public class PedidoEntity {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private RutaEntity id_ruta;
 
-    private Date fecha;
+    private Date fecha_compra;
+    private Date fecha_entrega;
 
     private boolean entregado;
     
