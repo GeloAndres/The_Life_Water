@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:the_life_water/domain/databases/datasource_model.dart';
 import 'package:the_life_water/domain/entities/client.dart';
+import 'package:the_life_water/domain/entities/order.dart';
 import 'package:the_life_water/domain/entities/product.dart';
 import 'package:the_life_water/infrastructure/mappers/client_mapper.dart';
 import 'package:the_life_water/infrastructure/mappers/producto_mapper.dart';
@@ -119,5 +120,23 @@ class Luisdatasource extends DatasourceModel {
     } catch (e) {
       throw Exception('Error al obtener los clientes: $e');
     }
+  }
+
+  //Ordenes
+  @override
+  Future<void> createNewOrder(Order newOrder) async {
+    try {
+      final response = await dio.get('/itemPedido');
+
+      if (response.statusCode == 200) {}
+    } catch (e) {
+      throw Exception('Error en la solicitud, status: $e');
+    }
+  }
+
+  @override
+  Future<List<Order>> getOrder() {
+    // TODO: implement getOrder
+    throw UnimplementedError();
   }
 }

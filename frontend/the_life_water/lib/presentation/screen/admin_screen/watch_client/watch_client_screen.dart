@@ -21,7 +21,8 @@ class WatchClientScreenState extends ConsumerState<WatchClientScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final clientList = ref.watch(clienteRepositoryProvider);
+    final clienteProvider = ref.watch(clienteRepositoryProvider);
+    final listaClientes = clienteProvider.getUser();
 
     return Scaffold(
       appBar: AppBar(
@@ -47,7 +48,7 @@ class WatchClientScreenState extends ConsumerState<WatchClientScreen> {
       ),
       body: Center(
         child: FutureBuilder<List<Client>>(
-          future: clientList.getUser(),
+          future: listaClientes,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const CircularProgressIndicator();
