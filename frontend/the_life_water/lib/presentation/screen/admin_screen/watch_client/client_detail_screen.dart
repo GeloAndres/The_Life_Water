@@ -1,19 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:the_life_water/domain/entities/client.dart';
-import 'package:the_life_water/presentation/screen/admin_screen/watch_client/update_client/update_client.dart'; // Importar el modelo Client
+import 'package:the_life_water/presentation/Provider/cliente_provider.dart';
+import 'package:the_life_water/presentation/screen/admin_screen/watch_client/update_client/update_client.dart';
 
-class ClientDetailsScreen extends StatelessWidget {
+class ClientDetailsScreen extends ConsumerWidget {
   final Client client;
 
   const ClientDetailsScreen({super.key, required this.client});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+    final clienteProvider = ref.watch(clienteRepositoryProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('${client.nombre} ${client.apellido}'),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.delete)),
+          IconButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text('¿Estas seguro?'),
+                        content: Text(
+                            'Borraremos al usuario ${client.nombre} definitivamente'),
+                        actions: [
+                          TextButton(
+                              onPressed: () {}, child: const Text('Confirmar')),
+                          TextButton(
+                              onPressed: () {
+                                context.pop();
+                              },
+                              child: const Text('Cancelar'))
+                        ],
+                      );
+                    });
+              },
+              icon: const Icon(Icons.delete)),
           const SizedBox(
             width: 20,
           ),
