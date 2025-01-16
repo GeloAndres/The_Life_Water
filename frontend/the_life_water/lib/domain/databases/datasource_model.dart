@@ -8,6 +8,7 @@ abstract class DatasourceModel {
   Future<void> postUser();
   Future<Client> getUserByID();
   Future<void> createNewClient(Client newClient);
+  Future<void> deleteUser(Client client);
 
   //Productos
   Future<List<Product>> getProduct();

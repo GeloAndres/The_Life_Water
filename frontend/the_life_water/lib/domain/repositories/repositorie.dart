@@ -8,6 +8,7 @@ abstract class Repositorie {
   Future<dynamic> postUser();
   Future<dynamic> getUserByID();
   Future<void> createNewClient(Client newClient);
+  Future<void> deleteUser(Client client);
 
   //Productos
   Future<List<Product>> getProduct();

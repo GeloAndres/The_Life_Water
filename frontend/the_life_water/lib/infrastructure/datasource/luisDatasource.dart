@@ -17,14 +17,11 @@ class Luisdatasource extends DatasourceModel {
       final response = await dio.get('/usuario');
 
       if (response.statusCode == 200) {
-        final List<dynamic> jsonList =
-            response.data; //transformamos a Lista de Map
+        final List<dynamic> jsonList = response.data;
 
-        //lo pasamos por el modelo para trabajar la informacion de la peticion
         final Iterable<Clientdbresponse> listClientResponse =
             jsonList.map((json) => Clientdbresponse.fromJson(json));
 
-        //transfomamos el iterable del modelo y lo mappeamos para hacer mach con la entidad Client
         final List<Client> listClientFinal = listClientResponse
             .where((x) => x.id != 0)
             .map((client) => ClientMapper().toEntiti(client))
@@ -36,6 +33,24 @@ class Luisdatasource extends DatasourceModel {
       }
     } catch (e) {
       throw Exception('Error al obtener los clientes: $e');
+    }
+  }
+
+  @override
+  Future<int?> deleteUser(Client client) async {
+    final Map<String, dynamic> cliente = {
+      'id': client.id,
+      'nombre': client.nombre,
+      'apellido': client.apellido,
+      'numTelefono': client.numTelefono,
+      'borrador': client.borrado
+    };
+
+    try {
+      final response = await dio.post('/usuario/delete', data: {cliente});
+      return response.statusCode;
+    } catch (e) {
+      throw 'Error $e';
     }
   }
 

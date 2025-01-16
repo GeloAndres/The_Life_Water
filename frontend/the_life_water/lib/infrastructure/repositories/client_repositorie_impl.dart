@@ -1,5 +1,6 @@
 import 'package:the_life_water/domain/databases/datasource_model.dart';
 import 'package:the_life_water/domain/entities/client.dart';
+import 'package:the_life_water/domain/entities/order.dart';
 import 'package:the_life_water/domain/entities/product.dart';
 import 'package:the_life_water/domain/repositories/repositorie.dart';
 
@@ -11,6 +12,11 @@ class ClientRepositorieImpl extends Repositorie {
   @override
   Future<void> createNewClient(Client newClient) {
     return datasource.createNewClient(newClient);
+  }
+
+  @override
+  Future<void> deleteUser(Client client) {
+    return datasource.deleteUser(client);
   }
 
   @override
@@ -39,5 +45,17 @@ class ClientRepositorieImpl extends Repositorie {
   @override
   Future<List<Product>> getProduct() {
     return datasource.getProduct();
+  }
+
+  @override
+  Future<void> createNewOrder(Order newOrder) {
+    // TODO: implement createNewOrder
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<Order>> getOrder() {
+    // TODO: implement getOrder
+    throw UnimplementedError();
   }
 }

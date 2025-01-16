@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:the_life_water/domain/entities/product.dart';
 import 'package:the_life_water/presentation/Provider/cliente_provider.dart';
-import 'package:the_life_water/presentation/screen/admin_screen/product/create_new_product/product_client_detail.dart';
+import 'package:the_life_water/presentation/screen/admin_screen/product/create_new_product/product_detail.dart';
 
 class ProductScreen extends ConsumerStatefulWidget {
   const ProductScreen({super.key});
