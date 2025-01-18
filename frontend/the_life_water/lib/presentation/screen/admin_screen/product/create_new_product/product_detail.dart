@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:the_life_water/domain/entities/product.dart';
 import 'package:the_life_water/presentation/Provider/cliente_provider.dart';
+import 'package:the_life_water/presentation/screen/admin_screen/product/create_new_product/update_product.dart';
 
 class ProductClientDetail extends ConsumerWidget {
   final Product product;
@@ -44,14 +45,14 @@ class ProductClientDetail extends ConsumerWidget {
           ),
           IconButton(
               onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => UpdateClient(
-                //       cliente: product,
-                //     ),
-                //   ),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => UpdateProduct(
+                      product: product,
+                    ),
+                  ),
+                );
               },
               icon: const Icon(Icons.edit)),
           const SizedBox(
@@ -64,15 +65,16 @@ class ProductClientDetail extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('ID: ${product.id}', style: const TextStyle(fontSize: 18)),
+            Text('ID Producto: ${product.id}',
+                style: const TextStyle(fontSize: 18)),
             const SizedBox(height: 8),
             Text('Nombre: ${product.nombre}',
                 style: const TextStyle(fontSize: 18)),
             const SizedBox(height: 8),
-            Text('Teléfono: ${product.precio}',
+            Text('Precio: ${product.precio.truncate()}',
                 style: const TextStyle(fontSize: 18)),
             const SizedBox(height: 8),
-            Text('Borrado: ${product.description}',
+            Text('Descripcion: ${product.description}',
                 style: const TextStyle(fontSize: 18)),
           ],
         ),

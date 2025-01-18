@@ -138,6 +138,13 @@ class Luisdatasource extends DatasourceModel {
   }
 
   //Ordenes
+
+  @override
+  Future<List<Order>> getOrder() {
+    // TODO: implement getOrder
+    throw UnimplementedError();
+  }
+
   @override
   Future<void> createNewOrder(Order newOrder) async {
     try {
@@ -147,11 +154,5 @@ class Luisdatasource extends DatasourceModel {
     } catch (e) {
       throw Exception('Error en la solicitud, status: $e');
     }
-  }
-
-  @override
-  Future<List<Order>> getOrder() {
-    // TODO: implement getOrder
-    throw UnimplementedError();
   }
 }
