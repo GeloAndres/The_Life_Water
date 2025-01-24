@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:the_life_water/domain/entities/client.dart';
 import 'package:the_life_water/presentation/Provider/cliente_provider.dart';
+import 'package:the_life_water/infrastructure/datasource/luisDatasource.dart';
+import 'package:the_life_water/infrastructure/repositories/client_repositorie_impl.dart';
 import 'package:the_life_water/presentation/screen/admin_screen/watch_client/update_client/update_client.dart';
 
 class ClientDetailsScreen extends ConsumerWidget {
@@ -12,6 +14,9 @@ class ClientDetailsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+    ClientRepositorieImpl luisDatasource =
+        ClientRepositorieImpl(datasource: Luisdatasource());
+
     final clienteProvider = ref.watch(clienteRepositoryProvider);
 
     return Scaffold(
@@ -29,7 +34,11 @@ class ClientDetailsScreen extends ConsumerWidget {
                             'Borraremos al usuario ${client.nombre} definitivamente'),
                         actions: [
                           TextButton(
-                              onPressed: () {}, child: const Text('Confirmar')),
+                              onPressed: () {
+                                luisDatasource.deleteUser(client);
+                                context.pop();
+                              },
+                              child: const Text('Confirmar')),
                           TextButton(
                               onPressed: () {
                                 context.pop();

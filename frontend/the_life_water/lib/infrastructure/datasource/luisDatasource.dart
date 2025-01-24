@@ -36,7 +36,7 @@ class Luisdatasource extends DatasourceModel {
     }
   }
 
-  @override
+  /*@override
   Future<int?> deleteUser(Client client) async {
     final Map<String, dynamic> cliente = {
       'id': client.id,
@@ -52,7 +52,7 @@ class Luisdatasource extends DatasourceModel {
     } catch (e) {
       throw 'Error $e';
     }
-  }
+  }*/
 
   @override
   Future<Client> getUserByID() {
@@ -88,6 +88,26 @@ class Luisdatasource extends DatasourceModel {
       }
     } catch (e) {
       throw Exception('Error al crear el cliente: $e');
+    }
+  }
+
+  @override
+  Future<void> deleteUser(Client client) async {
+    try {
+      final response = await dio.post('/usuario/delete', data: {
+        "id": client.id,
+        "nombre": client.nombre,
+        "apellido": client.apellido,
+        "numTelefono": client.numTelefono,
+        "borrado": client.borrado
+      });
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        print('Usuario eliminado: ${response.data}');
+        return response.data;
+      }
+    } catch (e) {
+      throw Exception('Error al eliminar el cliente: $e');
     }
   }
 
